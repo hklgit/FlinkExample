@@ -29,6 +29,7 @@ public class StreamingKafkaSource {
         env.getCheckpointConfig().setMinPauseBetweenCheckpoints(500);
         env.getCheckpointConfig().setCheckpointTimeout(60000);
         env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
+        //这里设置的是 当程序被干掉的时候，我们重启的时候会不会把之前的checkpoint的数据干掉，这个设置的是保留
         env.getCheckpointConfig().enableExternalizedCheckpoints(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
 
         //设置statebackend

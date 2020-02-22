@@ -34,10 +34,10 @@ object StreamingKafkaSourceScala {
 
     //env.setStateBackend(new RocksDBStateBackend("hdfs://hadoop100:9000/flink/checkpoints",true));
 
-    val topic = "t1"
+    val topic = "test1204"
     val prop = new Properties()
-    prop.setProperty("bootstrap.servers","hadoop110:9092")
-    prop.setProperty("group.id","con1")
+    prop.setProperty("bootstrap.servers","192.168.2.140:9092")
+    prop.setProperty("group.id","test_01")
 
 
     val myConsumer = new FlinkKafkaConsumer011[String](topic,new SimpleStringSchema(),prop)

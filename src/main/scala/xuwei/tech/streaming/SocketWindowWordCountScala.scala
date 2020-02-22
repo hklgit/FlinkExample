@@ -30,7 +30,7 @@ object SocketWindowWordCountScala {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
     //链接socket获取输入数据
-    val text = env.socketTextStream("hadoop100",port,'\n')
+    val text = env.socketTextStream("192.168.0.159",port,'\n')
 
 
     //解析数据(把数据打平)，分组，窗口计算，并且聚合求sum

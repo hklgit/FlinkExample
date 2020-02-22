@@ -57,6 +57,8 @@ object HKLSocketWindowWordCount {
 
    val ds = env.socketTextStream("192.168.0.159",9000)
 
+
+    // keyby 逻辑上将一个流分成不相交的分区，每个分区包含相同键的元素。在内部，这是通过散列分区来实现的
     val result = ds.flatMap(data => data.split("\\s"))
       .map(word => WordCount(word, 1))
       .keyBy("word")
