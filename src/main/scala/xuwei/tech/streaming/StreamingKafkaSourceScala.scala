@@ -7,7 +7,7 @@ import org.apache.flink.contrib.streaming.state.RocksDBStateBackend
 import org.apache.flink.streaming.api.CheckpointingMode
 import org.apache.flink.streaming.api.environment.CheckpointConfig
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011
+import org.apache.flink.streaming.connectors.kafka.{FlinkKafkaConsumer010, FlinkKafkaConsumer011}
 
 /**
   * Created by xuwei.tech on 2018/10/23.
@@ -40,8 +40,11 @@ object StreamingKafkaSourceScala {
     prop.setProperty("group.id","test_01")
 
 
-    val myConsumer = new FlinkKafkaConsumer011[String](topic,new SimpleStringSchema(),prop)
+    val myConsumer = new FlinkKafkaConsumer010[String](topic,new SimpleStringSchema(),prop)
     val text = env.addSource(myConsumer)
+
+
+//    text.process()
 
     text.print()
 
